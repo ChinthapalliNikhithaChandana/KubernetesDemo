@@ -1,20 +1,20 @@
 ﻿apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dockersampleconfig-deployment
+  name: kubernetesdemo-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Dockersampleconfig
+      app: KubernetesDemo
   template:
     metadata:
       labels:
-        app: Dockersampleconfig
+        app: KubernetesDemo
     spec:
       containers:
       - name: dockersamplerepos
-        image: samplecr.azurecr.io/dockersamplerepos:latest
+        image: 851311cr.azurecr.io/dockersamplerepos:latest
         ports:
         - containerPort: 8080
       imagePullSecrets:
@@ -24,10 +24,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: dockersampleconfig
+  name: kuberntesdemo
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: Dockersampleconfig
+    app: KubernetesDemo
